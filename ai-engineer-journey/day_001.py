@@ -60,10 +60,29 @@ class Solution:
             
         return max_ls
             
+    def method3(self)->list[int]:
+        """
+        O(n) single pass, O(1) space 
+        No sorting, No mutation, 
+        """
+        top1 = top2 = top3 = float('-inf')
+        for num in self.ls:
+            if num > top1:
+                top1,top2,top3 = num, top1, top2 
+            elif num > top2:
+                top2,top3 = num, top2 
+            elif num > top3:
+                top3 = num 
+        return [top1,top2,top3] 
+        
 if __name__ == '__main__':
     ls = [10,2,3,1,14,15,4,8]
     sol = Solution(ls)
-    top_3:list[int] = sol.method1()
-    print(top_3)
-    top_3:list[int] = sol.method2()
-    print(top_3)
+    # top_3:list[int] = sol.method1()
+    # print(top_3)
+    # top_3:list[int] = sol.method2()
+    # print(top_3)
+    top_3:list[int] = sol.method3()
+    print(top_3) 
+    
+    
