@@ -60,11 +60,12 @@ class Solution:
             
         return max_ls
             
-    def method3(self)->list[int]:
+    def method3(self, ls)->list[int]:
         """
         O(n) single pass, O(1) space 
         No sorting, No mutation, 
         """
+        self.ls = ls 
         top1 = top2 = top3 = float('-inf')
         for num in self.ls:
             if num > top1:
@@ -82,7 +83,12 @@ if __name__ == '__main__':
     # print(top_3)
     # top_3:list[int] = sol.method2()
     # print(top_3)
-    top_3:list[int] = sol.method3()
+    top_3:list[int] = sol.method3(ls)
     print(top_3) 
     
-    
+    # Test cases 
+    assert sol.method3([10,2,3,1,14,15,4,8]) == [15,14,10]
+    assert sol.method3([-1,-2,-3])           == [-1,-2,-3]
+    assert sol.method3([5,5,5,1,2])          == [5,5,5]    # duplicates
+    assert sol.method3([1])                  == [1, float('-inf'), float('-inf')]
+    print("All tests passed ✅")
